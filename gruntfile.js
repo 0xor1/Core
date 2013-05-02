@@ -14,10 +14,10 @@ module.exports = function(grunt){
                 options: {
                     stripBanners: true,
                     banner: '/*\n'+
-                        '\tLib:\t<%= pkg.name %>\n'+
+                        '\tLib:\t\t<%= pkg.name %>\n'+
                         '\tVersion:\t<%= pkg.version %>\n'+
-                        '\tBuild Date: <%= grunt.template.today("yyyy-mm-dd") %>\n'+
-                        '\tAuthor: <%= pkg.author %>\n*/\n\n'+
+                        '\tBuild Date:\t<%= grunt.template.today("yyyy-mm-dd") %>\n'+
+                        '\tAuthor:\t\t<%= pkg.author %>\n*/\n\n'+
                         '(function(NS){\n\n',
                     footer: '\n\n})("<%= pkg.name %>");'
                 },
@@ -29,7 +29,7 @@ module.exports = function(grunt){
 
             uglify: {
                 options: {
-                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+                    banner: '/*! <%= pkg.name %> v<%= pkg.version%> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
                 },
                 build: {
                     src: 'build/<%= pkg.name %>.<%= pkg.version %>.dev.js',
