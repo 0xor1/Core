@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "author": "0xor1    http://github.com/0xor1",
     "description": "The Core classes used in my client-side libraries and API's.",
+    "homepage": "http://github.com/0xor1/Core",
     "contributors": [
         {
             "name": "Daniel Robinson - 0xor1"
