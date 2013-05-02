@@ -12,7 +12,7 @@
         }
         , type = "anEvent";
 
-    test("Eventables can listen to, fire and, and be disposed of.", function(){
+    test("Eventables can listen to, fire events, and be disposed of.", function(){
         function simpleRunThrough(){
             str = "";
             objs = [];
