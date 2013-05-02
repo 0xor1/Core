@@ -1,19 +1,21 @@
 Core
 =====
 
-A collection of core classes used in other libraries and APIs. See the [Docs]() for a full and detailed description
+A collection of core classes used in other libraries and APIs. See the docs for a full and detailed description
 of the Core classes.
 
----
+## Building
 
-##Example
+Clone the repo, then `cd` to the root directory and simply `>npm install` then `>grunt`:
 
----
+##Quick Start
 
 * [Eventable](#eventable)
 * [Dom](#dom)
 
-###Eventable
+---
+
+##Eventable
 
 ```javascript
 var cat = new CORE.Eventable()
@@ -55,7 +57,7 @@ var cat = new CORE.Eventable()
 
 ```
 
-###Dom
+##Dom
 
 inherit in the usual way:
 
