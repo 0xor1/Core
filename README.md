@@ -6,7 +6,11 @@ of the Core classes.
 
 ## Building
 
-Clone the repo, then `cd` to the root directory and simply `>npm install` then `>grunt`:
+```Console
+>npm install
+...
+>grunt
+```
 
 ##Quick Start
 
