@@ -3,15 +3,22 @@
  * Date: 20/04/13
  */
 
-(function(ns){
+(function(NS){
 
 
-    var rs = ns.rs
+    var ns = window[NS] = window[NS] || {}
         , objId = 0
         , freedObjIds = []
         , fnId = 0
         , freedFnIds = []
+        , rs = {}
         ;
+
+    //Resource Strings
+    rs._ = '_';
+    rs.prfx = rs._ + NS + rs._;
+    rs.fnId = rs.prfx + 'id';
+    rs.fnUsageCount = rs.prfx + 'usageCount';
 
 
     ns.Eventable = function(){
@@ -201,4 +208,4 @@
     })();
 
 
-})(ns);
+})(NS);

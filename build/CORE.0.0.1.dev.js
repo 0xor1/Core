@@ -1,42 +1,16 @@
 /*
-	Lib: CORE
-	Created: 2013-05-01
-	Author: 0xor1 <http://github.com/0xor1>
+	Lib:	CORE
+	Version:	0.0.1
+	Build Date: 2013-05-02
+	Author: 0xor1    http://github.com/0xor1
 */
 
-(function(){
+(function(NS){
 
+(function(NS){
 
-    var NS = 'CORE'
-        , ns = {}
-        , rs = ns.rs = {}
+    var ns = window[NS] = window[NS] || {}
         ;
-
-    //Misc
-    rs._ = '_';
-    rs.prfx = rs._ + NS + rs._;
-
-    //Eventable
-    rs.fnId = rs.prfx + 'id';
-    rs.fnUsageCount = rs.prfx + 'usageCount';
-
-
-    //GRUNT INJECT INTERNALS HERE
-
-
-    //CORE API
-    window[NS] = {
-
-        Eventable: ns.Eventable,
-
-        Dom: ns.Dom
-
-    };
-
-
-})();
-(function(ns){
-
 
     ns.Dom = function(domInfo){
 
@@ -100,16 +74,23 @@
     }
 
 
-})(ns);
-(function(ns){
+})(NS);
+(function(NS){
 
 
-    var rs = ns.rs
+    var ns = window[NS] = window[NS] || {}
         , objId = 0
         , freedObjIds = []
         , fnId = 0
         , freedFnIds = []
+        , rs = {}
         ;
+
+    //Resource Strings
+    rs._ = '_';
+    rs.prfx = rs._ + NS + rs._;
+    rs.fnId = rs.prfx + 'id';
+    rs.fnUsageCount = rs.prfx + 'usageCount';
 
 
     ns.Eventable = function(){
@@ -299,4 +280,6 @@
     })();
 
 
-})(ns);
+})(NS);
+
+})("CORE");

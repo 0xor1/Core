@@ -1,7 +1,7 @@
 {
     "name": "CORE",
     "version": "0.0.1",
-    "author": "0xor1 <http://github.com/0xor1>",
+    "author": "0xor1    http://github.com/0xor1",
     "description": "The Core classes used in my client-side libraries and API's.",
     "contributors": [
         {
@@ -13,7 +13,8 @@
         "grunt-contrib-clean": "~0.4.1",
         "grunt-contrib-concat": "~0.3.0",
         "grunt-contrib-uglify": "~0.2.0",
-        "grunt-contrib-yuidoc": "~0.4.0"
+        "grunt-contrib-yuidoc": "~0.4.0",
+        "grunt-contrib-qunit": "~0.2.1"
     },
     "license": "MIT"
 }

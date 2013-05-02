@@ -3,8 +3,10 @@
  * Date: 23/04/13
  */
 
-(function(ns){
+(function(NS){
 
+    var ns = window[NS] = window[NS] || {}
+        ;
 
     ns.Dom = function(domInfo){
 
@@ -68,4 +70,4 @@
     }
 
 
-})(ns);
+})(NS);
