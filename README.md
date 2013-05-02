@@ -4,16 +4,20 @@ Core
 A collection of core classes used in other libraries and APIs. See the [Docs]() for a full and detailed description
 of the Core classes.
 
-##Simple Examples
+---
 
-* [Eventable](#Eventable)
-* [Dom](#Dom)
+##Example
+
+---
+
+* [Eventable](#eventable)
+* [Dom](#dom)
 
 ###Eventable
 
 ```javascript
-var cat = new Core.Eventable()
-	, dog = new Core.Eventable()
+var cat = new CORE.Eventable()
+	, dog = new CORE.Eventable()
 	;
 
 	//cat listens for the dogs 'bark' event
