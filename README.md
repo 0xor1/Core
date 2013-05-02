@@ -26,7 +26,9 @@ var cat = new CORE.Eventable()
 	//dog fires its 'bark' event
 	dog.fire({
 		type: 'bark'
-	}); //cat.runAway(event) is called
+	});
+
+	//cat.runAway(event) is called
 
 	//cat stops listening to the dogs 'bark' event
 	cat.off(dog, 'bark', cat.runAway);
