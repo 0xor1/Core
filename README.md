@@ -34,10 +34,12 @@ var cat = new CORE.Eventable()
 	//dog fires its 'bark' event
 	dog.fire({
 		type: 'bark'
-	}); //cat does not respond as it is no longer listening to the dogs bark event.
+	});
+
+	//cat does not respond as it is no longer listening to the dogs bark event.
 
 	//cat listens for the dogs 'bark' event
-    	cat.on(dog, 'bark', cat.runAway);
+    cat.on(dog, 'bark', cat.runAway);
 
     //dispose of the cat
     cat.dispose();
@@ -45,7 +47,9 @@ var cat = new CORE.Eventable()
     //dog fires its 'bark' event
     dog.fire({
     	type: 'bark'
-    }); //cat does not respond because there is no cat
+    });
+
+    //cat does not respond because there is no cat
 
 ```
 
