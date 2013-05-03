@@ -1,6 +1,5 @@
 module.exports = function(grunt){
 
-    // Project configuration.
     grunt.initConfig({
 
             pkg: grunt.file.readJSON('package.json'),
@@ -23,7 +22,7 @@ module.exports = function(grunt){
                             '(function(NS){\n\n',
                         footer: '\n\n})("<%= pkg.name %>");'
                     },
-                    src: ['src/Eventable.js','src/*.js'],
+                    src: ['src/**/*.js'],
                     dest: 'build/<%= pkg.name %>.<%= pkg.version %>.dev.js'
                 },
                 tests:{
@@ -42,7 +41,7 @@ module.exports = function(grunt){
                             '<html>\n'+
                             '<head>\n'+
                             "<meta charset='utf-8'>\n"+
-                            '<title>"<%= pkg.name %> v<%= pkg.version%> - unit test</title>\n'+
+                            '<title><%= pkg.name %> v<%= pkg.version%> - unit test</title>\n'+
                             '<script src="../../../build/<%= pkg.name %>.<%= pkg.version %>.dev.js"></script>\n'+
                             '<script src="../QUnit/QUnit-v1.11.0.js"></script>\n'+
                             '<script src="<%= pkg.name %>.<%= pkg.version %>.test.js"></script>\n'+
@@ -64,7 +63,7 @@ module.exports = function(grunt){
                             '<html>\n'+
                             '<head>\n'+
                             "<meta charset='utf-8'>\n"+
-                            '<title>"<%= pkg.name %> v<%= pkg.version%> - unit test</title>\n'+
+                            '<title><%= pkg.name %> v<%= pkg.version%> - unit test</title>\n'+
                             '<script src="../../../build/<%= pkg.name %>.<%= pkg.version %>.min.js"></script>\n'+
                             '<script src="../QUnit/QUnit-v1.11.0.js"></script>\n'+
                             '<script src="<%= pkg.name %>.<%= pkg.version %>.test.js"></script>\n'+
@@ -121,6 +120,5 @@ module.exports = function(grunt){
     grunt.registerTask('build', ['clean','concat','uglify']);
     grunt.registerTask('test', ['qunit']);
     grunt.registerTask('doc', ['yuidoc']);
-
 
 };

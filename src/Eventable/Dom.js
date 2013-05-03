@@ -8,6 +8,11 @@
     var ns = window[NS] = window[NS] || {}
         ;
 
+    /**
+     *
+     * @param domInfo
+     * @constructor
+     */
     ns.Dom = function(domInfo){
 
         ns.Eventable.call(this);
@@ -19,29 +24,42 @@
 
     ns.Dom.prototype = Object.create(ns.Eventable.prototype);
 
-
+    /**
+     *
+     */
     ns.Dom.prototype.addChild = function(){
         throw new Error("Dom object does not implement addChild method");
     }
 
-
+    /**
+     *
+     */
     ns.Dom.prototype.removeChild = function(){
         throw new Error("Dom object does not implement removeChild method");
     }
 
-
+    /**
+     *
+     */
     ns.Dom.prototype.removeSelf = function(){
         if(this.parent){
             this.parentNode.removeChild(this.dom);
         }
     };
 
-
+    /**
+     *
+     */
     ns.Dom.prototype.dispose = function(){
         this.removeSelf();
         ns.Eventable.prototype.dispose.call(this);
     };
 
+    /**
+     *
+     * @param domInfo
+     * @returns {*}
+     */
     ns.Dom.domGenerator = function(domInfo){
         if(!domInfo){return null;}
         var dom = document.createElement(domInfo.tag);
@@ -60,7 +78,11 @@
         return dom;
     }
 
-
+    /**
+     *
+     * @param dom
+     * @param style
+     */
     ns.Dom.style = function(dom, style){
         for(var i in style){
             if(style.hasOwnProperty(i)){

@@ -5,6 +5,11 @@
 
 (function(NS){
 
+    /**
+     * Provides Core functionality
+     *
+     * @module CORE
+     */
 
     var ns = window[NS] = window[NS] || {}
         , objId = 0
@@ -20,7 +25,12 @@
     rs.fnId = rs.prfx + 'id';
     rs.fnUsageCount = rs.prfx + 'usageCount';
 
-
+    /**
+     * Makes objects eventable, identifiable and disposable
+     *
+     * @class Eventable
+     * @constructor
+     */
     ns.Eventable = function(){
         this._id = getAnUnusedObjId();
         //following properties are only created when they are first required to save on unnecessary memory usage
@@ -31,12 +41,25 @@
 
     ns.Eventable.prototype = {
 
-
+        /**
+         * Get the objects unique ID
+         *
+         * @method id
+         * @returns {Number} The objects ID
+         */
         id: function(){
             return this._id;
         },
 
-
+        /**
+         * Add an event listener
+         *
+         * @method on
+         * @param {Object} obj the object to listen to
+         * @param {String} type the type of event to listen for
+         * @param {Function} fn the function to call on the event
+         * @chainable
+         */
         on: function(obj, type, fn){
 
             var queues = obj._eventContractQueues = obj._eventContractQueues || {}
@@ -57,7 +80,15 @@
             return this;
         },
 
-
+        /**
+         * Remove an event listener
+         *
+         * @method off
+         * @param {Object} obj the object to stop listening to
+         * @param {String} type the type of event to stop listening for
+         * @param {Function} fn the function to remove
+         * @chainable
+         */
         off: function(obj, type, fn){
 
             if(!this._eventContracts){return this;}
@@ -86,7 +117,12 @@
             return this;
         },
 
-
+        /**
+         * Fire an event
+         *
+         * @param {Object} event the event object to fire, must contain atleast a '.type' property
+         * @chainable
+         */
         fire: function(event){
 
             if(typeof this._eventContractQueues === 'undefined'){
@@ -128,7 +164,12 @@
             return this;
         },
 
-
+        /**
+         *  Remove all the objects own event listeners and all of the event listeners from other objects attached to this object.
+         *  It then deletes all of the objects properties.
+         *
+         *  @method dispose
+         */
         dispose: function(){
 
             var contracts = this._eventContracts;
