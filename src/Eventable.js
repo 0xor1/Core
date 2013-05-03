@@ -55,9 +55,9 @@
          * Add an event listener
          *
          * @method on
-         * @param {Object} obj the object to listen to
-         * @param {String} type the type of event to listen for
-         * @param {Function} fn the function to call on the event
+         * @param {Eventable} obj The object to listen to
+         * @param {String} type The type of event to listen for
+         * @param {Function} fn The function to call on the event
          * @chainable
          */
         on: function(obj, type, fn){
@@ -84,9 +84,9 @@
          * Remove an event listener
          *
          * @method off
-         * @param {Object} obj the object to stop listening to
-         * @param {String} type the type of event to stop listening for
-         * @param {Function} fn the function to remove
+         * @param {Eventable} obj The object to stop listening to
+         * @param {String} type The type of event to stop listening for
+         * @param {Function} fn The function to remove
          * @chainable
          */
         off: function(obj, type, fn){
@@ -121,7 +121,7 @@
          * Fire an event
          *
          * @method fire
-         * @param {Object} event the event object to fire, must contain atleast a '.type' property
+         * @param {Object} event The event object to fire, must contain atleast a '.type' property
          * @chainable
          */
         fire: function(event){
@@ -205,18 +205,36 @@
         }
     };
 
-
+    /**
+     * Removes a functions ID and makes it available to e assigned again
+     *
+     * @private
+     * @method freeFnId
+     * @param {Function} fn The Function to have its ID removed
+     */
     function freeFnId(fn){
         freedFnIds.push(fn[rs.fnId]);
         delete fn[rs.fnId];
     }
 
-
+    /**
+     * Gets an unused Function ID
+     *
+     * @private
+     * @method getAnUnusedFnId
+     * @returns {Number} An unused Function ID
+     */
     function getAnUnusedFnId(){
         return (freedFnIds.length > 0) ? freedFnIds.pop() : fnId++;
     }
 
-
+    /**
+     * Gets an unused Object ID
+     *
+     * @private
+     * @method getAnUnusedObjId
+     * @returns {Number} An unused Object ID
+     */
     function getAnUnusedObjId(){
         return (freedObjIds.length > 0) ? freedObjIds.pop() : objId++;
     }
@@ -224,6 +242,16 @@
 
     var EventContract = (function(){
 
+        /**
+         * Specifies an event binding
+         *
+         * @class EventContract (private to Eventable)
+         * @param {Eventable} owner The listening object
+         * @param {Eventable} obj The object being listened to
+         * @param {String} type The type of the event being listened for
+         * @param {Function} fn The function to call on the event
+         * @constructor
+         */
         function EventContract(owner, obj, type, fn){
             this.owner = owner;
             this.obj = obj;
@@ -232,14 +260,35 @@
             this.key = EventContract.generateKey(obj, type, fn);
         }
 
-        EventContract.prototype.fulfill = function(arg){
-            this.fn.call(this.owner, arg);
+        /**
+         * Calls the function in the context of the owner object, i.e. fulfilling the event contract.
+         *
+         * @method fulfill
+         * @param {Object} event The event object to pass to listener functions
+         */
+        EventContract.prototype.fulfill = function(event){
+            this.fn.call(this.owner, event);
         };
 
+        /**
+         * Destroys the event contract
+         *
+         * @method finalise
+         */
         EventContract.prototype.finalise = function(){
             this.owner.off(this.obj, this.type, this.fn);
         };
 
+        /**
+         * Returns a unique signature for the event contract ensuring no duplicate contracts are made.
+         *
+         * @static
+         * @method generateKey
+         * @param {Eventable} obj The object being listened to
+         * @param {String} type The type of event being listend for
+         * @param {Function} fn The function to call when the event is fired
+         * @returns {string} The unique key for this event contract
+         */
         EventContract.generateKey = function(obj, type, fn){
             var fnId = fn[rs.fnId] = (typeof fn[rs.fnId] === 'undefined') ? getAnUnusedFnId() : fn[rs.fnId];
             return rs._ + obj._id + rs._ + type + rs._ + fnId;
