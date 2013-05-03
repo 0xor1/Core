@@ -120,6 +120,7 @@
         /**
          * Fire an event
          *
+         * @method fire
          * @param {Object} event the event object to fire, must contain atleast a '.type' property
          * @chainable
          */
