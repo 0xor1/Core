@@ -31,7 +31,7 @@ module.exports = function(grunt){
                         banner: '(function(NS){\n\n',
                         footer: '\n\n})("<%= pkg.name %>");'
                     },
-                    src: ['test/unit/*.js'],
+                    src: ['test/unit/src/**/*.js'],
                     dest: 'test/unit/build/<%= pkg.name %>.<%= pkg.version %>.test.js'
                 },
                 testDevHtml: {
