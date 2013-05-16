@@ -116,7 +116,7 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
     grunt.loadNpmTasks('grunt-contrib-qunit');
 
-    grunt.registerTask('default', ['clean','concat','uglify','yuidoc','qunit']);
+    grunt.registerTask('default', ['clean','concat','uglify','qunit']);
     grunt.registerTask('build', ['clean','concat','uglify']);
     grunt.registerTask('test', ['qunit']);
     grunt.registerTask('doc', ['yuidoc']);
